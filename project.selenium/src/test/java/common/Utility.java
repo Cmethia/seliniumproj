@@ -31,7 +31,7 @@ public WebDriver driver;
 		  driver.manage().window().maximize();		 
 	      }else if(NameOfBrowser.equalsIgnoreCase("Edge")) {
 	    	  String jk=System.getProperty("user.dir");
-				System.out.println(jk);
+				
 	      	System.setProperty("webdriver.edge.driver",jk+"\\Drivers\\msedgedriver.exe" );
 	      	driver=new EdgeDriver();
 	      	driver.get(URL);	    	
@@ -44,10 +44,11 @@ public WebDriver driver;
 	  Screenshots();
   }
   public void Screenshots() throws IOException {
+	  String jk=System.getProperty("user.dir");
 	  Date multiScreen=new Date();
 		String ShotEdited= multiScreen.toString().replace(" ", "-").replace(":", "_");
 	  File HomePage=((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-	  FileHandler.copy(HomePage, new File("C:\\Users\\Celia\\git\\repository\\project.selenium\\picture\\"+ShotEdited+"Desktop.jpg"));
+	  FileHandler.copy(HomePage, new File(jk+"\\picture\\"+ShotEdited+"Desktop.jpg"));
   }
   }
 
